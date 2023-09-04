@@ -1,0 +1,13 @@
+.cell{
+   width: calc(100% / 10);
+   aspect-ratio: 1;
+   border: 1px solid white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.bg-click{
+   background-color: paleturquoise;
+   color: black;
+}
