@@ -8,7 +8,6 @@
 
 .bg-success{
    background-color: paleturquoise;
-   color: black;
 }
 
 .bg-bomb{
@@ -17,7 +16,6 @@
 
 #grid{
    width: 40%;
-
 }
 
 #result{

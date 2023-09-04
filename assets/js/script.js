@@ -2,10 +2,10 @@ const playButtonEl = document.getElementById("play-button");
 const resetButtonEl = document.getElementById("reset-button");
 const gridEl = document.getElementById("grid");
 const menuEl = document.getElementById("menu");
-const bombs = [];
 const resultEl = document.getElementById("result");
 const titleEl = document.querySelector("h1");
 const containerEl = document.getElementById("container");
+const bombs = [];
 
 /**
  * Generate a random number
@@ -16,7 +16,6 @@ const containerEl = document.getElementById("container");
 function getRndInteger(min, max) {
    return Math.floor(Math.random() * (max - min + 1) ) + min;
  }
-
 
 /**
  * Generate 16 different random numbers and push in array
@@ -30,12 +29,13 @@ function generateNumberBombs (numberCells){
       } else {
          bombs.push(bomb);
       }
-      
    }   
 }
 
+
+
 /**
- * Generate a grid with n cells
+ * Generate a grid with n cells clickables
  * @param {number} numberCells 
  */
 function generateCells(numberCells) {
@@ -51,13 +51,13 @@ function generateCells(numberCells) {
          if (numberSafeCells < (numberCells - 16)) {
 
             if (bombs.includes(i)) {
-            this.classList.add("bg-bomb");
-            toggle(resultEl);
-            resultEl.innerHTML = `Your score: ${numberSafeCells}`;
-            gridEl.classList.add("pe-none");
-         } else {
-            this.classList.add("bg-success");
-         }
+               this.classList.add("bg-bomb");
+               toggle(resultEl);
+               resultEl.innerHTML = `Your score: ${numberSafeCells}`;
+               gridEl.classList.add("pe-none");
+            } else {
+               this.classList.add("bg-success");
+            }
 
          } else {
             toggle(resultEl)
@@ -72,8 +72,6 @@ function generateCells(numberCells) {
 /**
  * Toggle class d-none on DomEl
  * @param {DomEl} domEl1 
- * @param {DomEl} domEl2 
- * @param {DomEl} domEl3 
  */
 function toggle (domEl1){
    domEl1.classList.toggle("d-none");
