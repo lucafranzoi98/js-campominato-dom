@@ -15,3 +15,17 @@
    background-color: red;
 }
 
+#grid{
+   width: 40%;
+
+}
+
+#result{
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: rgba(255, 106, 0, 0.95);
+   padding: 1rem;
+   border-radius: 1rem;
+}
+

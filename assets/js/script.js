@@ -3,6 +3,9 @@ const resetButtonEl = document.getElementById("reset-button");
 const gridEl = document.getElementById("grid");
 const menuEl = document.getElementById("menu");
 const bombs = [];
+const resultEl = document.getElementById("result");
+const titleEl = document.querySelector("h1");
+const containerEl = document.getElementById("container");
 
 /**
  * Generate a random number
@@ -14,6 +17,11 @@ function getRndInteger(min, max) {
    return Math.floor(Math.random() * (max - min + 1) ) + min;
  }
 
+
+/**
+ * Generate 16 different random numbers and push in array
+ * @param {number} numberCells 
+ */
 function generateNumberBombs (numberCells){
    for (let i = 0; i < 16; i++) {
       const bomb = getRndInteger(1, numberCells);
@@ -39,13 +47,24 @@ function generateCells(numberCells) {
       gridEl.append(cell);
 
       cell.addEventListener("click", function(){
-         if (bombs.includes(i)) {
-            this.classList.toggle("bg-bomb")
+         const numberSafeCells = document.querySelectorAll(".bg-success").length;
+         if (numberSafeCells < (numberCells - 16)) {
+
+            if (bombs.includes(i)) {
+            this.classList.add("bg-bomb");
+            toggle(resultEl);
+            resultEl.innerHTML = `Your score: ${numberSafeCells}`;
+            gridEl.classList.add("pe-none");
          } else {
-            this.classList.toggle("bg-success");
+            this.classList.add("bg-success");
+         }
+
+         } else {
+            toggle(resultEl)
+            resultEl.innerHTML = `YOU WON!!! Your score: ${numberSafeCells}`;
+            gridEl.classList.add("pe-none");
          }
          
-         console.log(cell.innerHTML);
       });
    }
 }
@@ -66,19 +85,19 @@ playButtonEl.addEventListener("click", function(){
    generateNumberBombs(numberCells);
    toggle(menuEl);
    toggle(resetButtonEl);
+   toggle(titleEl);
    console.log(bombs);
 });
+
 
 resetButtonEl.addEventListener("click", function(){
    gridEl.innerHTML = "";
    bombs.length = 0;
+   resultEl.innerHTML = "";
+   gridEl.classList.remove("pe-none");
 
    toggle(menuEl);
-   toggle(resetButtonEl);   
+   toggle(resetButtonEl);  
+   toggle(titleEl);
+   toggle(resultEl);
 });
-
-
-// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
-
-
