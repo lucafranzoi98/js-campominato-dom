@@ -1,5 +1,4 @@
 .cell{
-   width: calc(100% / 10);
    aspect-ratio: 1;
    border: 1px solid white;
    display: flex;
