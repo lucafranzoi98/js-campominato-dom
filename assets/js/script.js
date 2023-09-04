@@ -31,15 +31,20 @@ function generateNumberBombs (numberCells){
  * @param {number} numberCells 
  */
 function generateCells(numberCells) {
-   for (let i = 0; i < numberCells; i++) {
+   for (let i = 1; i <= numberCells; i++) {
       const cell = document.createElement("div");
       cell.classList.add("cell");
       cell.style.width = `calc(100% / ${Math.sqrt(numberCells)})`;
-      cell.innerHTML = i + 1;
+      cell.innerHTML = i;
       gridEl.append(cell);
 
       cell.addEventListener("click", function(){
-         this.classList.toggle("bg-click");
+         if (bombs.includes(i)) {
+            this.classList.toggle("bg-bomb")
+         } else {
+            this.classList.toggle("bg-success");
+         }
+         
          console.log(cell.innerHTML);
       });
    }
@@ -73,7 +78,6 @@ resetButtonEl.addEventListener("click", function(){
 });
 
 
-// In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
 // La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 

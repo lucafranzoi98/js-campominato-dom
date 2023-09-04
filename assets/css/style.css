@@ -6,7 +6,12 @@
    align-items: center;
 }
 
-.bg-click{
+.bg-success{
    background-color: paleturquoise;
    color: black;
 }
+
+.bg-bomb{
+   background-color: red;
+}
+
