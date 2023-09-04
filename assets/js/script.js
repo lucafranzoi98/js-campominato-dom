@@ -32,8 +32,6 @@ function generateNumberBombs (numberCells){
    }   
 }
 
-
-
 /**
  * Generate a grid with n cells clickables
  * @param {number} numberCells 
@@ -48,8 +46,11 @@ function generateCells(numberCells) {
 
       cell.addEventListener("click", function(){
          const numberSafeCells = document.querySelectorAll(".bg-success").length;
+
+         // Condition if all the success cells were clicked
          if (numberSafeCells < (numberCells - 16)) {
 
+            // Condition if clicked a bomb or not
             if (bombs.includes(i)) {
                this.classList.add("bg-bomb");
                toggle(resultEl);
